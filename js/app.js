@@ -6,20 +6,19 @@ $(document).ready(function() {
     $('.breeds-list li a').click(function() {
         var breedClass = $(this).attr('class');
 
-        console.log(breedClass);
         $('.breeds-list li').removeClass('active');
         $(this).parent().addClass('active');
 
         if (breedClass == 'all') {
-            $('.dog-list-container').children('div.apply-filters').show(300);
+            $('.dog-list-container').children('div.apply-filters').show();
         } else {
-            $('.dog-list-container').children('div.apply-filters:not(.' + breedClass + ')').hide(200);
-            $('.dog-list-container').children('div.apply-filters.' + breedClass).show(300);
+            $('.dog-list-container').children('div.apply-filters:not(.' + breedClass + ')').hide();
+            $('.dog-list-container').children('div.apply-filters.' + breedClass).show();
         }
         return false;
     });
 
-    $(".filter__item-dropdown").on("click", function(e) {
+    $(".filter__item-dropdown, .breeds-list li a").on("click", function(e) {
         $(".breeds-list").toggleClass("open");
         e.stopPropagation()
     });
@@ -30,8 +29,8 @@ $(document).ready(function() {
     });
 
 
-    $(".breeds-list__item").click(function() {
-        let selectedTxt = $(".breeds-list__item.active").text();
+    $(".breeds-list li a").click(function() {
+        let selectedTxt = $(".breeds-list li.active").text();
 
         $(".filter__item-selected").text(selectedTxt);
     });
